@@ -31,7 +31,7 @@
 			<h2 class="text-2xl font-semibold mb-2">Get Started</h2>
 			<p>Download the Stop Doomscroll extension from the Chrome Store today!</p>
 			<a
-				href="https://chromewebstore.google.com/search/stop%20doomscroll"
+				href="https://chromewebstore.google.com/detail/stop-doomscroll/nhhkaopmidmnhkhcefakkfkohinlinhh"
 				class="text-blue-600 underline mt-2 block"
 			>
 				Download from Google Marketplace
