@@ -19,7 +19,7 @@
     </ul>
     
     <h2>3. Sharing Your Information</h2>
-    <p>We do not share, sell, or disclose any information to third parties. The data sent in query parameters is not stored or used for any other purpose.</p>
+    <p>We do not share, sell, or disclose any information to third parties. The data sent in query parameters is not used for any other purpose.</p>
     
     <h2>4. Security of Your Information</h2>
     <p>We take reasonable measures to ensure that any information processed is secure. However, since we do not collect or store personal information, there is no personal data to secure.</p>
