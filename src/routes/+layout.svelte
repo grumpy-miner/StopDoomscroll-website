@@ -48,6 +48,7 @@
 				target="_blank"
 				class="text-blue-500 underline">MIT License</a
 			>.
+            <a href="/privacy-policy" class="text-blue-500 underline">Privacy Policy</a>
 		</p>
 	</footer>
 </div>
