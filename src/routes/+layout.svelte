@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 </script>
 
 <svelte:head>
@@ -8,21 +9,53 @@
 </svelte:head>
 
 <div class="flex flex-col min-h-screen">
-	<header class="bg-doom-yellow p-4 text-doom-blue">
-		<nav class="container mx-auto flex justify-between items-center font-bold">
+	<header class="bg-doom-yellow shadow-md">
+		<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
 			<div
-				class="flex items-center space-x-2"
+				class="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200 cursor-pointer"
 				on:click={() => goto('/')}
 				on:keyup={() => goto('/')}
 				role="button"
 				tabindex="0"
 			>
-				<img src="/128x128.png" alt="Stoop Doomscroll" class="w-10 h-10" />
-				<div class="text-xl">Stop Doomscroll</div>
+				<img src="/128x128.png" alt="Stop Doomscroll" class="w-12 h-12 rounded-lg shadow-sm" />
+				<div class="text-2xl font-bold text-doom-blue">Stop Doomscroll</div>
 			</div>
-			<div class="space-x-4">
-				<button on:click={() => goto('/')}>Home</button>
-				<button on:click={() => goto('/mental-health')}>Mental Health</button>
+
+			<div class="space-x-2">
+				<div class="flex items-center gap-3">
+					<a
+						href="/"
+						class="px-4 py-2 rounded-lg font-semibold transition-all duration-200 {$page.url
+							.pathname === '/'
+							? 'bg-doom-blue text-white'
+							: 'text-doom-blue hover:bg-doom-blue/10'}"
+					>
+						Home
+					</a>
+					<a
+						href="/mental-health"
+						class="px-4 py-2 rounded-lg font-semibold transition-all duration-200 {$page.url
+							.pathname === '/mental-health'
+							? 'bg-doom-blue text-white'
+							: 'text-doom-blue hover:bg-doom-blue/10'}"
+					>
+						Mental Health
+					</a>
+					<a
+						href="https://github.com/grumpy-miner/StopDoomscroll-Chrome-Extension"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="px-4 py-2 rounded-lg font-semibold transition-all duration-200 text-doom-blue hover:bg-doom-blue/10 inline-flex items-center gap-2"
+					>
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+							/>
+						</svg>
+						<span>GitHub</span>
+					</a>
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -31,24 +64,39 @@
 		<slot />
 	</main>
 
-	<footer class="bg-gray-800 text-white p-4 text-center">
-		<p>
-			© 2024 Stop Doomscroll. Extension source on <a
+	<footer class="bg-gray-800 text-white py-6 px-4 text-center">
+		<p class="max-w-3xl mx-auto space-x-2">
+			<span>© 2024 Stop Doomscroll.</span>
+			<a
 				href="https://github.com/grumpy-miner/StopDoomscroll-Chrome-Extension"
 				target="_blank"
-				class="text-blue-500 underline">GitHub</a
-			>. Webstie source on
+				class="text-doom-yellow hover:text-white transition-colors duration-200"
+			>
+				Extension source
+			</a>
+			<span>·</span>
 			<a
 				href="https://github.com/grumpy-miner/StopDoomscroll-website"
 				target="_blank"
-				class="text-blue-500 underline">GitHub</a
-			>. Licensed under the
+				class="text-doom-yellow hover:text-white transition-colors duration-200"
+			>
+				Website source
+			</a>
+			<span>·</span>
 			<a
 				href="https://github.com/grumpy-miner/StopDoomscroll-Chrome-Extension/blob/main/LICENSE"
 				target="_blank"
-				class="text-blue-500 underline">MIT License</a
-			>.
-            <a href="/privacy-policy" class="text-blue-500 underline">Privacy Policy</a>
+				class="text-doom-yellow hover:text-white transition-colors duration-200"
+			>
+				MIT License
+			</a>
+			<span>·</span>
+			<a
+				href="/privacy-policy"
+				class="text-doom-yellow hover:text-white transition-colors duration-200"
+			>
+				Privacy Policy
+			</a>
 		</p>
 	</footer>
 </div>

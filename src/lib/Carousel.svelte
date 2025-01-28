@@ -1,52 +1,55 @@
 <script lang="ts">
-	export let images: string[] = []; // Array of images for the carousel
-	let currentIndex = 0; // Tracks the index of the first visible image
-	const visibleImages = 3; // Number of visible images at a time
-	const gap = 16; // Gap between the images, you can adjust the spacing here
-	const maxIndex = images.length - visibleImages + 1; // Max index that we can move to
+	export let images: string[] = [];
+	let currentIndex = 0;
+	const visibleImages = 3;
+	const gap = 16;
+	const maxIndex = images.length - visibleImages + 1;
 
-	// Move to the next image
 	function next() {
 		currentIndex = (currentIndex + 1) % maxIndex;
 	}
 
-	// Move to the previous image
 	function prev() {
 		currentIndex = (currentIndex - 1 + maxIndex) % maxIndex;
 	}
+
+	// Auto-advance carousel
+	setInterval(next, 4000);
 </script>
 
-<!-- Carousel Container -->
-<div class="relative w-full max-w-4xl mx-auto overflow-hidden h-400">
-	<!-- Carousel Slides -->
+<div class="relative w-full max-w-7xl mx-auto overflow-hidden py-8">
 	<div
 		class="flex transition-transform duration-700 ease-in-out"
 		style="transform: translateX(calc(-{currentIndex} * (100% / {visibleImages} + {gap}px))); gap: {gap}px;"
 	>
 		{#each images as image, index}
-			<div class="carousel-slide w-1/{visibleImages} object-cover w-1/3 flex-shrink-0">
+			<div class="w-1/{visibleImages} flex-shrink-0 px-2">
 				<img
 					src={image}
 					alt="Screenshot of Stop Doomscroll"
-					class="w-full h-full object-cover rounded-lg border-2 border-black"
+					class="w-full h-[400px] object-contain rounded-lg shadow-lg border-2 border-gray-200 hover:border-doom-blue transition-colors duration-300"
 				/>
 			</div>
 		{/each}
 	</div>
 
-	<!-- Navigation Buttons -->
 	<button
 		on:click={prev}
-		class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100"
+		class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-doom-blue/75 text-white p-3 rounded-full hover:bg-doom-blue transition-colors duration-300"
 		aria-label="Previous Slide"
 	>
-		&#10094; <!-- Left Arrow -->
+		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+		</svg>
 	</button>
+
 	<button
 		on:click={next}
-		class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100"
+		class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-doom-blue/75 text-white p-3 rounded-full hover:bg-doom-blue transition-colors duration-300"
 		aria-label="Next Slide"
 	>
-		&#10095; <!-- Right Arrow -->
+		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+		</svg>
 	</button>
 </div>
